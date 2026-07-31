@@ -10,5 +10,5 @@ As a solo project built to apply HTML, CSS, and JavaScript skills learned over t
 
 - **Planning/backlog approach:** Fixed backlog, defined in `roadmap.md`, ordered by technical dependency rather than shifting priority.
 - **Iteration length:** One roadmap phase = one increment. No fixed time-box; a phase is complete when its feature works and is tested.
-- **How progress is tracked:** Roadmap phase checklist (`roadmap.md`), 6 increments.
+- **How progress is tracked:** Roadmap phase checklist (`roadmap.md`), 7 increments.
 - **Testing approach:** Manual QA per increment before moving to the next phase (see `testing.md`), plus a final full pass across all features during UX polish.

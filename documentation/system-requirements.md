@@ -33,4 +33,4 @@ The system supports modern browsers only (e.g., latest versions of Chrome, Firef
 The system covers parts essential for users to navigate the quiz independently — questions, quiz categories, answer choices, and results — and ensures these are readable by screen readers, with particular support for NVDA. The interface must also accommodate the mobile version of the system for the target users.
 
 ### NFR4 (Security)
-The application enforces a Content-Security-Policy via a meta tag in `index.html`, restricting scripts, styles, and objects to same-origin sources, to mitigate XSS from injected or malicious content.
+The application enforces a Content-Security-Policy via a meta tag in `index.html`, restricting scripts, styles, and objects to same-origin sources, and sanitizes/validates user-entered input (identification fields and enumerable selections such as category/answer choices) before rendering or storing it, to mitigate XSS from injected or malicious content.
