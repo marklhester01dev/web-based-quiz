@@ -1,0 +1,19 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer base {
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  a {
+    text-decoration: none;
+  }
+}
