@@ -27,10 +27,11 @@ assets/
    |-- objectives.md                    - project goals
    |-- scope-and-limitation.md          - range of the system
    |-- summary.md                       - mini-project summary
-   |-- system-methodology.md            - how the project will be executed 
+   |-- system-methodology.md            - how the project will be executed
    |-- roadmap.md                       - system methodology development basis
    |-- system-requirements.md           - what the system needs to satisfy
-   |-- tech-stack.md                    - software technologies use
+   |-- tech-stack.md                    - software technologies used
+   |-- testing.md                       - manual QA test cases per requirement
  js/                                    - interactivity
  index.html                             - markup
  README.md                              - documentation of the mini-project
