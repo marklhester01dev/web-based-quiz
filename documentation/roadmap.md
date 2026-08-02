@@ -1,6 +1,6 @@
 # DEVELOPMENT ROADMAP
 
-- [ ] **INCREMENT 1:** Create components for categories and a working category types that redirects users to their choice
+- [x] **INCREMENT 1:** Create components for categories and a working category types that redirects users to their choice
 
 - [ ] **INCREMENT 2:** Create the identification input (name entry) and sanitize identification and enumeration input fields to prevent XSS
 

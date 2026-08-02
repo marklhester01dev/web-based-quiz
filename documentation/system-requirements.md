@@ -1,6 +1,6 @@
 ## Functional Requirements
 
-- [ ] **FR1 (Category Selection)**: Allow users to choose a quiz category
+- [x] **FR1 (Category Selection)**: Allow users to choose a quiz category
 Before starting the quiz, the system presents a list of available categories and allows the user to select one to begin.
 
 - [ ] **FR2 (Question & Answer Flow):** Present questions and accept answers

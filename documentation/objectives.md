@@ -6,7 +6,7 @@
 
 ## Specific Objectives
 
-- [ ] Allow users to select a quiz category before starting.
+- [x] Allow users to select a quiz category before starting.
 - [ ] Track and display the user's progress during the quiz.
 - [ ] Generate and display quiz results, including the user's final score.
 - [ ] Show the correct answers after the quiz is completed.
