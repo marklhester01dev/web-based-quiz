@@ -21,6 +21,7 @@ assets/
    |-- icons/                           - svg icons
    |-- images/                          - decorative images for the quiz
  css/                                   - stylings
+   |-- general.css                      - global stylings
  documentation/                         - documentation files
    |-- deliverables.md                  - tangible project requirement
    |-- features.md                      - functionalites of the system
@@ -33,13 +34,24 @@ assets/
    |-- tech-stack.md                    - software technologies used
    |-- testing.md                       - manual QA test cases per requirement
  js/                                    - interactivity
- index.html                             - markup
- README.md                              - documentation of the mini-project
+   |-- components/                      - reusable web components
+        |-- category_cards.js           - <category-card> custom element
+   |-- multiple-choice-redirection.js   - multiple-choice--page logic
+ node_modules/                          - installed dev dependencies (ignored by git)
+ pages/                                 - individual quiz category pages
+   |-- enumeration.html
+   |-- identification.html
+   |-- multiple-choice.html
+   |-- true-false.html
+.gitignore
+eslint.config.mjs                       - linting rules
+index.html                              - markup
+package-lock.json
+package.json
+README.md                               - documentation of the mini-project
 ```
 
 ```
 AUTHOR: marklhester01dev
 GITHUB: https://www.github.com/marklhester01dev
 ```
-
-
