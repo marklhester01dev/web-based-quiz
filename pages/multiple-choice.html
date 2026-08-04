@@ -70,7 +70,8 @@
     <link rel="stylesheet" href="../css/general.css" />
 
     <!-- Scripts -->
-    <script src="../js/multiple-choice.js"></script>
+    <script src="../js/components/multiple-choice-form.js" defer></script>
+    <script src="../js/multiple-choice.js" defer></script>
     <title>Web-based Quiz</title>
   </head>
   <body>
@@ -86,6 +87,7 @@
         </div>
       </section>
 
+      <!-- Multiple Choice Form -->
       <form class="multiple-choice__form" id="quiz-form">
         <article class="multiple-choice__question" data-question-id="1">
           <h2 id="q1-label" class="multiple-choice__question-text">
@@ -162,6 +164,7 @@
           <i class="ph ph-arrow-right"></i>
         </button>
       </form>
+      <!-- Multiple Choice Form -->
     </main>
   </body>
 </html>
