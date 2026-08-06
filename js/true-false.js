@@ -1,24 +1,6 @@
 const questions = [
   {
     id: 1,
-    question: "Mars is known as the Red Planet.",
-    choices: [
-      { value: "True", label: "True" },
-      { value: "False", label: "False" },
-    ],
-    answer: "True",
-  },
-  {
-    id: 2,
-    question: "Plants absorb oxygen from the atmosphere for photosynthesis.",
-    choices: [
-      { value: "True", label: "True" },
-      { value: "False", label: "False" },
-    ],
-    answer: "False",
-  },
-  {
-    id: 3,
     question: "The Pacific Ocean is the largest ocean on Earth.",
     choices: [
       { value: "True", label: "True" },
@@ -27,8 +9,26 @@ const questions = [
     answer: "True",
   },
   {
+    id: 2,
+    question: "The capital city of Australia is Sydney.",
+    choices: [
+      { value: "True", label: "True" },
+      { value: "False", label: "False" },
+    ],
+    answer: "False",
+  },
+  {
+    id: 3,
+    question: "An octopus has three hearts.",
+    choices: [
+      { value: "True", label: "True" },
+      { value: "False", label: "False" },
+    ],
+    answer: "True",
+  },
+  {
     id: 4,
-    question: "William Shakespeare wrote 'Romeo and Juliet'.",
+    question: "The human heart has four chambers.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -46,16 +46,7 @@ const questions = [
   },
   {
     id: 6,
-    question: "The Great Barrier Reef is located in Australia.",
-    choices: [
-      { value: "True", label: "True" },
-      { value: "False", label: "False" },
-    ],
-    answer: "True",
-  },
-  {
-    id: 7,
-    question: "There are eight continents on Earth.",
+    question: "Venus is the closest planet to the Sun.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -63,8 +54,17 @@ const questions = [
     answer: "False",
   },
   {
+    id: 7,
+    question: "JavaScript can be used to create interactive web pages.",
+    choices: [
+      { value: "True", label: "True" },
+      { value: "False", label: "False" },
+    ],
+    answer: "True",
+  },
+  {
     id: 8,
-    question: "The nucleus is known as the powerhouse of the cell.",
+    question: "HTML is a programming language.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -73,7 +73,7 @@ const questions = [
   },
   {
     id: 9,
-    question: "Mandarin Chinese has the most native speakers in the world.",
+    question: "Water is made up of two hydrogen atoms and one oxygen atom.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -82,7 +82,7 @@ const questions = [
   },
   {
     id: 10,
-    question: "The smallest prime number is 2.",
+    question: "Lightning travels faster than sound.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -91,16 +91,16 @@ const questions = [
   },
   {
     id: 11,
-    question: "The pancreas produces insulin.",
+    question: "Penguins are mammals.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: "False",
   },
   {
     id: 12,
-    question: "World War II ended in 1945.",
+    question: "The square root of 81 is 9.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -109,7 +109,8 @@ const questions = [
   },
   {
     id: 13,
-    question: "Proxima Centauri is the closest star to Earth.",
+    question:
+      "The Great Wall of China is visible from the Moon with the naked eye.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -118,7 +119,7 @@ const questions = [
   },
   {
     id: 14,
-    question: "Tokyo is the capital city of Japan.",
+    question: "Albert Einstein developed the theory of relativity.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -127,25 +128,16 @@ const questions = [
   },
   {
     id: 15,
-    question: "Electrical resistance is measured in volts.",
+    question: "A leap year has 366 days.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: "True",
   },
   {
     id: 16,
-    question: "Mount Everest is the tallest mountain in the world.",
-    choices: [
-      { value: "True", label: "True" },
-      { value: "False", label: "False" },
-    ],
-    answer: "True",
-  },
-  {
-    id: 17,
-    question: "AB+ is the universal donor blood type.",
+    question: "The Sahara Desert is the largest desert on Earth.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -153,8 +145,8 @@ const questions = [
     answer: "False",
   },
   {
-    id: 18,
-    question: "The main function of red blood cells is to carry oxygen.",
+    id: 17,
+    question: "The Eiffel Tower is located in Paris.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -162,8 +154,17 @@ const questions = [
     answer: "True",
   },
   {
+    id: 18,
+    question: "The human body has 300 bones in adulthood.",
+    choices: [
+      { value: "True", label: "True" },
+      { value: "False", label: "False" },
+    ],
+    answer: "False",
+  },
+  {
     id: 19,
-    question: "Leonardo da Vinci painted the Mona Lisa.",
+    question: "The chemical symbol for sodium is Na.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
@@ -172,12 +173,12 @@ const questions = [
   },
   {
     id: 20,
-    question: "Water freezes at 100°C.",
+    question: "Mount Everest is the highest mountain above sea level.",
     choices: [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: "True",
   },
 ];
 
@@ -209,11 +210,11 @@ quiz.addEventListener("quiz-answer", (event) => {
 });
 
 quiz.addEventListener("quiz-back", () => {
-  if(currentIndex === 0) return;
+  if (currentIndex === 0) return;
 
   currentIndex--;
   userAnswers.pop();
   renderQuestion();
-})
+});
 
 renderQuestion();
