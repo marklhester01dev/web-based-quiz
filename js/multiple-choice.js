@@ -234,6 +234,7 @@ function renderQuestion() {
   quiz.setAttribute("question-text", currentQuestion.question);
   quiz.setAttribute("choices", JSON.stringify(currentQuestion.choices));
   quiz.setAttribute("is-last", isLast.toString());
+  quiz.setAttribute("is-first", (currentIndex === 0).toString());
 }
 
 quiz.addEventListener("quiz-answer", (event) => {
@@ -246,6 +247,13 @@ quiz.addEventListener("quiz-answer", (event) => {
   } else {
     console.log("Quiz Finished", userAnswers);
   }
+});
+
+quiz.addEventListener("quiz-back", () => {
+  if (currentIndex === 0) return;
+  currentIndex--;
+  userAnswers.pop();
+  renderQuestion();
 });
 
 renderQuestion();
