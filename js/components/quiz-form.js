@@ -1,24 +1,24 @@
 const template = document.createElement("template");
 template.innerHTML = `
-    <form class="multiple-choice__form" id="quiz-form">
-      <article class="multiple-choice__question" data-question-id="1">
-        <h2 id="q1-label" class="multiple-choice__question-text"></h2>
+    <form class="category-choice__form" id="quiz-form">
+      <article class="category-choice__question" data-question-id="1">
+        <h2 id="q1-label" class="category-choice__question-text"></h2>
 
         <div
-        class="multiple-choice__options"
+        class="category-choice__options"
         role="radiogroup"
         aria-labelledby="q1-label"
         >
         </div>
       </article>
 
-      <div class="multiple-choice__actions">
-        <button type="button" class="multiple-choice__btn">
-          <span class="multiple-choice__back">Back</span>
+      <div class="category-choice__actions">
+        <button type="button" class="category-choice__btn">
+          <span class="category-choice__back">Back</span>
         </button>
 
-        <button type="submit" class="multiple-choice__btn">
-          <span class="multiple-choice__next">Next</span>
+        <button type="submit" class="category-choice__btn">
+          <span class="category-choice__next">Next</span>
         </button>
       </div>
   </form>
@@ -66,11 +66,11 @@ class QuizForm extends HTMLElement {
     }
 
     const node = template.content.cloneNode(true);
-    const article = node.querySelector(".multiple-choice__question");
-    const heading = node.querySelector(".multiple-choice__question-text");
-    const optionsWrapper = node.querySelector(".multiple-choice__options");
-    const nextLabelBtn = node.querySelector(".multiple-choice__next");
-    const backLabelBtn = node.querySelector(".multiple-choice__back").closest("button");
+    const article = node.querySelector(".category-choice__question");
+    const heading = node.querySelector(".category-choice__question-text");
+    const optionsWrapper = node.querySelector(".category-choice__options");
+    const nextLabelBtn = node.querySelector(".category-choice__next");
+    const backLabelBtn = node.querySelector(".category-choice__back").closest("button");
 
     article.setAttribute("data-question-id", id);
     heading.id = `q${id}-label`;
@@ -84,16 +84,16 @@ class QuizForm extends HTMLElement {
     
     choices.forEach((choice, i) => {
       const optionDiv = document.createElement("div");
-      optionDiv.className = "multiple-choice__option";
+      optionDiv.className = "category-choice__option";
       optionDiv.innerHTML = `
           <input
           type="radio"
           id="q${id}-option${i + 1}"
           name="question${id}"
           value="${choice.value}"
-          class="multiple-choice__input"
+          class="category-choice__input"
         />
-        <label for="q${id}-option${i + 1}" class="multiple-choice__label">
+        <label for="q${id}-option${i + 1}" class="category-choice__label">
           ${choice.label}
         </label>
       `;
@@ -117,7 +117,7 @@ class QuizForm extends HTMLElement {
     });
 
     // guard: only wire the back button if it actually rendered
-    const liveBackBtn = this.querySelector(".multiple-choice__back")?.closest("button");
+    const liveBackBtn = this.querySelector(".category-choice__back")?.closest("button");
     if (liveBackBtn) {
       liveBackBtn.addEventListener("click", () => {
         this.dispatchEvent(new CustomEvent("quiz-back", { bubbles: true }));
