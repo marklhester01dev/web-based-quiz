@@ -36,6 +36,7 @@ class QuizForm extends HTMLElement {
       "is-last",
       "is-first",
       "current-answer",
+      "input-count",
     ];
   }
 
@@ -63,6 +64,7 @@ class QuizForm extends HTMLElement {
     const isLast = this.getAttribute("is-last") === "true";
     const isFirst = this.getAttribute("is-first") === "true";
     const answerValue = this.getAttribute("current-answer") || "";
+    const inputCount = this.getAttribute("input-count") || "1";
 
     const node = template.content.cloneNode(true);
     const article = node.querySelector(".category-choice__question");
@@ -83,13 +85,15 @@ class QuizForm extends HTMLElement {
       backLabelBtn.remove();
     }
 
-    const input = document.createElement("input");
-    input.type = "text";
-    input.id = `q${id}-answer`;
-    input.name = `question${id}`;
-    input.className = "category-choice__input";
-    input.value = answerValue;
-    optionsWrapper.appendChild(input);
+    for (let i = 0; i < Number(inputCount); i++) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = `q${id}-answer`;
+      input.name = `question${id}`;
+      input.className = "category-choice__input";
+      input.value = answerValue;
+      optionsWrapper.appendChild(input);
+    }
 
     this.replaceChildren(node);
 

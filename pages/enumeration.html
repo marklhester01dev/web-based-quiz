@@ -69,7 +69,26 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/general.css" />
 
+    <!-- Scripts -->
+    <script src="../js/components/quiz-form-inputs.js" defer></script>
+    <script src="../js/enumeration.js" defer></script>
     <title>Web-based Quiz | Enumeration</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <section class="category-choice">
+        <div class="category-choice__container">
+          <h1 class="category-choice__title">Enumeration</h1>
+          <p class="category-choice__description">
+            <span class="category-choice__instruction">Instruction:</span>
+            Read each item carefully and list out all the answers it asks for.
+            Spelling counts, so double-check before submitting. Good luck!
+          </p>
+        </div>
+      </section>
+      <!-- Enumeration Form -->
+      <quiz-form id="quiz"></quiz-form>
+      <!-- Enumeration Form -->
+    </main>
+  </body>
 </html>
