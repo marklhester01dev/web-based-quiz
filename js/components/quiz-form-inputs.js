@@ -36,6 +36,7 @@ class QuizForm extends HTMLElement {
       "is-last",
       "is-first",
       "current-answer",
+      "input-count",
     ];
   }
 
@@ -63,6 +64,7 @@ class QuizForm extends HTMLElement {
     const isLast = this.getAttribute("is-last") === "true";
     const isFirst = this.getAttribute("is-first") === "true";
     const answerValue = this.getAttribute("current-answer") || "";
+    const inputCount = this.getAttribute("input-count") || "1";
 
     const node = template.content.cloneNode(true);
     const article = node.querySelector(".category-choice__question");
@@ -83,25 +85,36 @@ class QuizForm extends HTMLElement {
       backLabelBtn.remove();
     }
 
-    const input = document.createElement("input");
-    input.type = "text";
-    input.id = `q${id}-answer`;
-    input.name = `question${id}`;
-    input.className = "category-choice__input";
-    input.value = answerValue;
-    optionsWrapper.appendChild(input);
+    for (let i = 0; i < Number(inputCount); i++) {
+      const input = document.createElement("input");
+      if (i === 0) {
+        input.id = `q${id}-answer`;
+      }
+      input.type = "text";
+      input.name = `question${id}-input${i+1}`;
+      input.className = `category-choice__input q${id}-answer`;
+      input.value = answerValue;
+      optionsWrapper.appendChild(input);
+    }
 
     this.replaceChildren(node);
 
     this.querySelector("#quiz-form").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const formData = new FormData(event.target);
-      const value = formData.get(`question${id}`);
+      const userInputs = {};
+      const inputs = document.querySelectorAll(
+        ".category-choice__input",
+      );
+
+      inputs.forEach((item) => {
+        userInputs[item.name] = item.value;
+        console.log(userInputs);
+      });
 
       this.dispatchEvent(
         new CustomEvent("quiz-answer", {
-          detail: { questionId: id, value },
+          detail: { questionId: id, userInputs },
           bubbles: true,
         }),
       );
