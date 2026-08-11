@@ -114,4 +114,4 @@ quiz.addEventListener("quiz-back", () => {
   renderQuestion();
 });
 
-renderQuestion();
+renderQuestion(); 
