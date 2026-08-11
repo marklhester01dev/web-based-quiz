@@ -87,10 +87,12 @@ class QuizForm extends HTMLElement {
 
     for (let i = 0; i < Number(inputCount); i++) {
       const input = document.createElement("input");
+      if (i === 0) {
+        input.id = `q${id}-answer`;
+      }
       input.type = "text";
-      input.id = `q${id}-answer`;
-      input.name = `question${id}`;
-      input.className = "category-choice__input";
+      input.name = `question${id}-input${i+1}`;
+      input.className = `category-choice__input q${id}-answer`;
       input.value = answerValue;
       optionsWrapper.appendChild(input);
     }
@@ -100,12 +102,19 @@ class QuizForm extends HTMLElement {
     this.querySelector("#quiz-form").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const formData = new FormData(event.target);
-      const value = formData.get(`question${id}`);
+      const userInputs = {};
+      const inputs = document.querySelectorAll(
+        ".category-choice__input",
+      );
+
+      inputs.forEach((item) => {
+        userInputs[item.name] = item.value;
+        console.log(userInputs);
+      });
 
       this.dispatchEvent(
         new CustomEvent("quiz-answer", {
-          detail: { questionId: id, value },
+          detail: { questionId: id, userInputs },
           bubbles: true,
         }),
       );

@@ -110,7 +110,7 @@ const quiz = document.getElementById("quiz");
 
 function renderQuestion() {
   const question = questions[currentIndex];
-  const isLast = currentIndex === questions.length;
+  const isLast = currentIndex === questions.length - 1;
   const answerValue = userAnswers[currentIndex] ?? "";
 
   quiz.setAttribute("question-id", question.id);
@@ -122,7 +122,7 @@ function renderQuestion() {
 }
 
 quiz.addEventListener("quiz-answer", (event) => {
-  userAnswers[currentIndex] = event.detail.value;
+  userAnswers[currentIndex] = event.detail.userInputs;
 
   currentIndex++;
 
