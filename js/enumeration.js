@@ -139,6 +139,7 @@ quiz.addEventListener("quiz-back", () => {
   if(currentIndex === 0) return;
 
   currentIndex--;
+  userAnswers.pop();
   renderQuestion();
 })
 
