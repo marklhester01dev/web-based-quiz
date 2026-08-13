@@ -4,7 +4,7 @@ template.innerHTML = `
     <article class="category-choice__question" data-question-id="1">
 
       <div class="category-choice__tracker">
-        <span class="category-choice__currentProgress" data-current-question="1"></span>
+        <span class="category-choice__currentProgress" data-current-progress="1"></span>
         <span>of</span>
         <span class="category-choice__totalQuestions" data-total-question="1"></span>
       </div>
@@ -101,7 +101,7 @@ class QuizForm extends HTMLElement {
     // Holds Current Progress
     currentProgressHolder.textContent = currentProgress;
     currentProgressHolder.setAttribute(
-      "data-current-question",
+      "data-current-progress",
       currentProgress,
     );
 
