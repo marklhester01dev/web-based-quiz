@@ -2,6 +2,13 @@ const template = document.createElement("template");
 template.innerHTML = `
   <form class="category-choice__form" id="quiz-form">
     <article class="category-choice__question" data-question-id="1">
+
+      <div class="category-choice__tracker">
+        <span class="category-choice__currentProgress" data-current-question="1"></span>
+        <span>of</span>
+        <span class="category-choice__totalQuestions" data-total-question="1"></span>
+      </div>
+     
       <h2 id="q1-label" class="category-choice__question-text"></h2>
 
       <div
@@ -37,6 +44,8 @@ class QuizForm extends HTMLElement {
       "is-first",
       "current-answer",
       "input-count",
+      "current-progress",
+      "total-questions",
     ];
   }
 
@@ -65,6 +74,8 @@ class QuizForm extends HTMLElement {
     const isFirst = this.getAttribute("is-first") === "true";
     const answerValue = this.getAttribute("current-answer") || "";
     const inputCount = this.getAttribute("input-count") || "1";
+    const totalQuestions = this.getAttribute("total-questions") || 0;
+    const currentProgress = this.getAttribute("current-progress") || 0;
 
     const node = template.content.cloneNode(true);
     const article = node.querySelector(".category-choice__question");
@@ -74,12 +85,29 @@ class QuizForm extends HTMLElement {
     const backLabelBtn = node
       .querySelector(".category-choice__back")
       .closest("button");
+    const currentProgressHolder = node.querySelector(
+      ".category-choice__currentProgress",
+    );
+    const totalQuestionHolder = node.querySelector(
+      ".category-choice__totalQuestions",
+    );
 
     article.setAttribute("data-question-id", id);
     heading.id = `q${id}-label`;
     heading.textContent = text;
     optionsWrapper.setAttribute("aria-labelledby", `q${id}-label`);
     nextLabelBtn.textContent = isLast ? "Submit" : "Next";
+
+    // Holds Current Progress
+    currentProgressHolder.textContent = currentProgress;
+    currentProgressHolder.setAttribute(
+      "data-current-question",
+      currentProgress,
+    );
+
+    // Holds total Questions
+    totalQuestionHolder.textContent = totalQuestions;
+    totalQuestionHolder.setAttribute("data-total-question", totalQuestions);
 
     if (isFirst) {
       backLabelBtn.remove();
@@ -91,7 +119,7 @@ class QuizForm extends HTMLElement {
         input.id = `q${id}-answer`;
       }
       input.type = "text";
-      input.name = `question${id}-input${i+1}`;
+      input.name = `question${id}-input${i + 1}`;
       input.className = `category-choice__input q${id}-answer`;
       input.value = answerValue;
       optionsWrapper.appendChild(input);
@@ -103,9 +131,7 @@ class QuizForm extends HTMLElement {
       event.preventDefault();
 
       const userInputs = {};
-      const inputs = document.querySelectorAll(
-        ".category-choice__input",
-      );
+      const inputs = document.querySelectorAll(".category-choice__input");
 
       inputs.forEach((item) => {
         userInputs[item.name] = item.value;
