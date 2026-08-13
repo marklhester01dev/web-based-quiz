@@ -3,10 +3,10 @@
 - [x] **FR1 (Category Selection)**: Allow users to choose a quiz category
 Before starting the quiz, the system presents a list of available categories and allows the user to select one to begin.
 
-- [ ] **FR2 (Question & Answer Flow):** Present questions and accept answers
+- [x] **FR2 (Question & Answer Flow):** Present questions and accept answers
 The system displays quiz questions one at a time (or as configured), presents the available answer choices, and allows the user to select and submit an answer for each question before proceeding.
 
-- [ ] **FR3 (Progress Indicator):** Show quiz progress
+- [x] **FR3 (Progress Indicator):** Show quiz progress
 While the quiz is in progress, the system displays the user's current position (e.g., "Question 3 of 10") so the user knows how much of the quiz remains.
 
 - [ ] **FR4 (Automatic Scoring):** Calculate the user's score

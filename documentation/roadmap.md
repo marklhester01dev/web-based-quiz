@@ -2,9 +2,9 @@
 
 - [x] **INCREMENT 1:** Create components for categories and a working category types that redirects users to their choice
 
-- [ ] **INCREMENT 2:** Create the identification input (name entry) and sanitize identification and enumeration input fields to prevent XSS
+- [x] **INCREMENT 2:** Create the identification input (name entry) and sanitize identification and enumeration input fields to prevent XSS
 
-- [ ] **INCREMENT 3:** Show Quiz Progress Indicator, Present Questions and Accept Answers
+- [x] **INCREMENT 3:** Show Quiz Progress Indicator, Present Questions and Accept Answers
 
 - [ ] **INCREMENT 4:** Calculate User Score Per Category and Display User Score, Show correct answers after submission, and store users scores in the local storage
 
