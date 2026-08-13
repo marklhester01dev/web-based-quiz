@@ -90,8 +90,8 @@ class QuizForm extends HTMLElement {
     nextLabelBtn.textContent = isLast ? "Submit" : "Next";
 
     // Holds Current Progress
-    currentProgressHolder.textContent = Number(currentProgress) + 1;
-    currentProgressHolder.setAttribute("data-current-progress", currentProgress);
+    currentProgressHolder.textContent = currentProgress;
+    currentProgressHolder.setAttribute("data-current-question", currentProgress);
     
     // Holds total Questions
     totalQuestionHolder.textContent = totalQuestions;

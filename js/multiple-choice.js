@@ -236,7 +236,7 @@ function renderQuestion() {
   quiz.setAttribute("is-last", isLast.toString());
   quiz.setAttribute("is-first", (currentIndex === 0).toString());
   quiz.setAttribute("total-questions", questions.length);
-  quiz.setAttribute("current-progress", currentIndex);
+  quiz.setAttribute("current-progress", currentIndex + 1);
 }
 
 quiz.addEventListener("quiz-answer", (event) => {
