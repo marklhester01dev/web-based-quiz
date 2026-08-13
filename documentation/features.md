@@ -1,6 +1,6 @@
 # FEATURES
 
-- [ ] Progress indicator during the quiz
+- [x] Progress indicator during the quiz
 - [x] Multiple quiz categories to choose from
 - [ ] Local storage for saving quiz data (no database)
 - [ ] Automatic scoring based on user answers

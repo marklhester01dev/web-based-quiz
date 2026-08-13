@@ -2,6 +2,13 @@ const template = document.createElement("template");
 template.innerHTML = `
     <form class="category-choice__form" id="quiz-form">
       <article class="category-choice__question" data-question-id="1">
+
+        <div class="category-choice__tracker">
+          <span class="category-choice__currentProgress" data-current-progress="1"></span>
+          <span>of</span>
+          <span class="category-choice__totalQuestions" data-total-question="1"></span>
+        </div>
+
         <h2 id="q1-label" class="category-choice__question-text"></h2>
 
         <div
@@ -30,7 +37,7 @@ class QuizForm extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["question-id", "question-text", "choices", "is-last", "is-first"];
+    return ["question-id", "question-text", "choices", "is-last", "is-first", "current-progress", "total-questions"];
   }
 
   connectedCallback() {
@@ -56,6 +63,8 @@ class QuizForm extends HTMLElement {
       this.getAttribute("question-text") || "No question text provided.";
     const isLast = this.getAttribute("is-last") === "true";
     const isFirst = this.getAttribute("is-first") === "true";
+    const totalQuestions = this.getAttribute("total-questions") || 0;
+    const currentProgress = this.getAttribute("current-progress") || 0;
   
     let choices = [];
 
@@ -71,12 +80,22 @@ class QuizForm extends HTMLElement {
     const optionsWrapper = node.querySelector(".category-choice__options");
     const nextLabelBtn = node.querySelector(".category-choice__next");
     const backLabelBtn = node.querySelector(".category-choice__back").closest("button");
+    const currentProgressHolder = node.querySelector(".category-choice__currentProgress");
+    const totalQuestionHolder = node.querySelector(".category-choice__totalQuestions");
 
     article.setAttribute("data-question-id", id);
     heading.id = `q${id}-label`;
     heading.textContent = text;
     optionsWrapper.setAttribute("aria-labelledby", `q${id}-label`);
     nextLabelBtn.textContent = isLast ? "Submit" : "Next";
+
+    // Holds Current Progress
+    currentProgressHolder.textContent = currentProgress;
+    currentProgressHolder.setAttribute("data-current-progress", currentProgress);
+    
+    // Holds total Questions
+    totalQuestionHolder.textContent = totalQuestions;
+    totalQuestionHolder.setAttribute("data-total-question", totalQuestions);
 
     if(isFirst){
       backLabelBtn.remove();

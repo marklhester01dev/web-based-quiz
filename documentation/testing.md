@@ -22,19 +22,19 @@ must be fixed before the phase is marked complete.
 
 ## Functional Requirement Test Cases
 
-- [ ] **TC1** (**FR1**) Category selection
+- [x] **TC1** (**FR1**) Category selection
 Steps: Load the app, view category list, click a category
 Expected: List of categories is shown; selecting one starts the quiz for that category
 
-- [ ] **TC2** (**FR2**) Answer and progress through questions
+- [x] **TC2** (**FR2**) Answer and progress through questions
 Steps: Start a quiz, select an answer choice, submit/proceed
 Expected: Selected answer is registered; next question loads (or quiz ends if last question)
 
-- [ ] **TC3** (**FR2**) Allow proceeding without selecting an answer 
+- [x] **TC3** (**FR2**) Allow proceeding without selecting an answer 
 Steps: Start a quiz, try to proceed without selecting a choice
 Expected: System continues the progression of the quiz and the unanswered question will be treated as wrong
 
-- [ ] **TC4** (**FR3**) Progress indicator updates
+- [x] **TC4** (**FR3**) Progress indicator updates
 Steps: Start a quiz, answer questions one by one
 Expected: Indicator (e.g. "Question 3 of 10") updates accurately after each question
 
