@@ -4,8 +4,9 @@ template.innerHTML = `
     <article class="category-choice__question" data-question-id="1">
 
       <div class="category-choice__tracker">
+        <span>Question</span>
         <span class="category-choice__currentProgress" data-current-progress="1"></span>
-        <span>of</span>
+        <span>out of</span>
         <span class="category-choice__totalQuestions" data-total-question="1"></span>
       </div>
      

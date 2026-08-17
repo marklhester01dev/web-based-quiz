@@ -187,6 +187,22 @@ const userAnswers = [];
 
 const quiz = document.getElementById("quiz");
 
+function calculateUserAnswer(questionAnswers, userAnswers) {
+  let correctAnswer = 0;
+  let wrongAnswer = 0;
+
+  for (let i = 0; i < questionAnswers.length; i++) {
+    if (userAnswers[i] === questionAnswers[i].answer) correctAnswer++;
+    else wrongAnswer++;
+  }
+
+  return {
+    userScore: correctAnswer,
+    correctAnswers: correctAnswer,
+    wrongAnswers: wrongAnswer,
+  };
+}
+
 function renderQuestion() {
   const currentQuestion = questions[currentIndex];
   const isLast = currentIndex === questions.length - 1;
@@ -208,6 +224,11 @@ quiz.addEventListener("quiz-answer", (event) => {
     renderQuestion();
   } else {
     console.log("Quiz Finished", userAnswers);
+
+    let result = calculateUserAnswer(questions, userAnswers);
+    console.log("Your Score:", result.userScore);
+    console.log("Correct Answer:", result.correctAnswers);
+    console.log("Wrong Answer:", result.wrongAnswers);
   }
 });
 

@@ -20,7 +20,7 @@ const questions = [
   {
     id: 6,
     question: "What is the longest river in the world?",
-    answer: ["Nile"],
+    answer: ["Nile River"],
   },
   {
     id: 7,
@@ -32,7 +32,7 @@ const questions = [
     question: "Who painted the Mona Lisa?",
     answer: ["Leonardo da Vinci"],
   },
-  { id: 9, question: "What is the smallest prime number?", answer: "2" },
+  { id: 9, question: "What is the smallest prime number?", answer: ["2"] },
   {
     id: 10,
     question: "What is the freezing point of water in Celsius?",
@@ -91,6 +91,28 @@ let userAnswers = [];
 
 const quiz = document.getElementById("quiz");
 
+function calculateUserAnswer(questionAnswers, userAnswers) {
+  let correctAnswer = 0;
+  let wrongAnswer = 0;
+
+  for (let i = 0; i < questionAnswers.length; i++) {
+    const correct = questionAnswers[i].answer[0];
+    const user = Object.values(userAnswers[i])[0] ?? "";
+
+    if (user.trim().toLowerCase() === correct.trim().toLowerCase()) {
+      correctAnswer++;
+    } else {
+      wrongAnswer++;
+    }
+  }
+
+  return {
+    userScore: correctAnswer,
+    correctAnswers: correctAnswer,
+    wrongAnswers: wrongAnswer,
+  };
+}
+
 function renderQuestion() {
   const question = questions[currentIndex];
   const isLast = currentIndex === questions.length - 1;
@@ -115,6 +137,11 @@ quiz.addEventListener("quiz-answer", (event) => {
     renderQuestion();
   } else {
     console.log("Quiz Finished", userAnswers);
+
+    let result = calculateUserAnswer(questions, userAnswers);
+    console.log("Your Score:", result.userScore);
+    console.log("Correct Answer:", result.correctAnswers);
+    console.log("Wrong Answer:", result.wrongAnswers);
   }
 });
 

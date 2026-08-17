@@ -108,6 +108,43 @@ let userAnswers = [];
 
 const quiz = document.getElementById("quiz");
 
+function calculateUserAnswer(questionAnswers, userAnswers) {
+  let correctAnswer = 0;
+  let wrongAnswer = 0;
+
+  for (let i = 0; i < questionAnswers.length; i++) {
+    const correctAnswers = questionAnswers[i].answer;
+    const userInputs = Object.values(userAnswers[i] ?? {});
+
+    const normalizedCorrect = correctAnswers.map((answer) =>
+      answer.trim().toLowerCase(),
+    );
+
+    const normalizedUser = userInputs.map((answer) =>
+      answer.trim().toLowerCase(),
+    );
+
+    const sortedCorrect = [...normalizedCorrect].sort();
+    const sortedUser = [...normalizedUser].sort();
+
+    const isCorrect =
+      sortedUser.length === sortedCorrect.length &&
+      sortedUser.every((answer, index) => answer === sortedCorrect[index]);
+
+    if (isCorrect) {
+      correctAnswer++;
+    } else {
+      wrongAnswer++;
+    }
+  }
+
+  return {
+    userScore: correctAnswer,
+    correctAnswers: correctAnswer,
+    wrongAnswers: wrongAnswer,
+  };
+}
+
 function renderQuestion() {
   const question = questions[currentIndex];
   const isLast = currentIndex === questions.length - 1;
@@ -125,22 +162,28 @@ function renderQuestion() {
 
 quiz.addEventListener("quiz-answer", (event) => {
   userAnswers[currentIndex] = event.detail.userInputs;
+  console.log(userAnswers);
 
   currentIndex++;
 
-  if(currentIndex < questions.length){
-     renderQuestion();
+  if (currentIndex < questions.length) {
+    renderQuestion();
   } else {
     console.log("Quiz Finished", userAnswers);
+
+    let result = calculateUserAnswer(questions, userAnswers);
+    console.log("Your Score:", result.userScore);
+    console.log("Correct Answer:", result.correctAnswers);
+    console.log("Wrong Answer:", result.wrongAnswers);
   }
 });
 
 quiz.addEventListener("quiz-back", () => {
-  if(currentIndex === 0) return;
+  if (currentIndex === 0) return;
 
   currentIndex--;
   userAnswers.pop();
   renderQuestion();
-})
+});
 
 renderQuestion();
