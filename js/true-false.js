@@ -227,15 +227,17 @@ quiz.addEventListener("quiz-answer", (event) => {
 
     let result = calculateUserAnswer(questions, userAnswers);
 
-     try{
+    try {
       localStorage.setItem("score", JSON.stringify(result.userScore));
-     } catch (err) {
-       console.error("Could not save score:", err);
-     }
+    } catch (err) {
+      console.error("Could not save score:", err);
+    }
     console.log("Your Score:", result.userScore);
     console.log("Correct Answer:", result.correctAnswers);
     console.log("Wrong Answer:", result.wrongAnswers);
     console.log(localStorage.getItem("score"));
+
+    window.location.href = "result.html";
   }
 });
 

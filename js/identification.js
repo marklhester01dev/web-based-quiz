@@ -149,6 +149,8 @@ quiz.addEventListener("quiz-answer", (event) => {
     console.log("Correct Answer:", result.correctAnswers);
     console.log("Wrong Answer:", result.wrongAnswers);
     console.log(localStorage.getItem("score"));
+
+    window.location.href = "result.html";
   }
 });
 
