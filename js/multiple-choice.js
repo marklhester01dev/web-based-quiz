@@ -230,10 +230,47 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
   let correctAnswer = 0;
   let wrongAnswer = 0;
 
+  localStorage.setItem("Total Questions", questionAnswers.length);
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  localStorage.setItem(
+    "correctAnswers",
+    JSON.stringify(questionAnswers.map((q) => q.answer)),
+  );
+  localStorage.setItem(
+    "questions",
+    JSON.stringify(questionAnswers.map((q) => q.question)),
+  );
+
   for (let i = 0; i < questionAnswers.length; i++) {
-    if (userAnswers[i] === questionAnswers[i].answer) correctAnswer++;
-    else wrongAnswer++;
+    if (userAnswers[i] === questionAnswers[i].answer) {
+      correctAnswer++;
+    } else {
+      wrongAnswer++;
+    }
   }
+
+  // for (let j = 0; j < questionAnswers.length; j++) {
+  //   localStorage.setItem(
+  //     JSON.stringify(`Question Number ${j}`),
+  //     JSON.stringify(`${questionAnswers[j].answer}`),
+  //   );
+  // }
+
+  // for (let j = 0; j < questionAnswers.length; j++) {
+  //   if (userAnswers[j] !== null) {
+  //     localStorage.setItem(
+  //       JSON.stringify(`Question Number ${j}:`),
+  //       JSON.stringify(`${userAnswers[j]}`),
+  //     );
+  //   } else {
+  //     localStorage.setItem(
+  //       JSON.stringify(`Question Number ${j}:`),
+  //       JSON.stringify("No answer"),
+  //     );
+  //   }
+  // console.log(localStorage.getItem(`Question Number ${j}: `));
+  // Prob: logs null in the after submit has been passed
+  // }
 
   return {
     userScore: correctAnswer,
