@@ -197,15 +197,12 @@ function renderQuestion() {
 
 quiz.addEventListener("quiz-answer", (event) => {
   userAnswers[currentIndex] = event.detail.userInputs;
-  console.log(userAnswers);
 
   currentIndex++;
 
   if (currentIndex < questions.length) {
     renderQuestion();
   } else {
-    console.log("Quiz Finished", userAnswers);
-
     let result = calculateUserAnswer(questions, userAnswers);
 
     try {
@@ -213,11 +210,6 @@ quiz.addEventListener("quiz-answer", (event) => {
     } catch (err) {
       console.error("Could not save score:", err);
     }
-
-    console.log("Your Score:", result.userScore);
-    console.log("Correct Answer:", result.correctAnswers);
-    console.log("Wrong Answer:", result.wrongAnswers);
-    console.log(localStorage.getItem("score"));
 
     window.location.href = "result.html";
   }
