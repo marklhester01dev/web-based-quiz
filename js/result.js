@@ -6,6 +6,7 @@ const storageData = {
   userAnswers: JSON.parse(localStorage.getItem("userAnswers") || "[]"),
   correctAnswers: JSON.parse(localStorage.getItem("correctAnswers") || "[]"),
   questions: JSON.parse(localStorage.getItem("questions") || "[]"),
+  orderedFlags: JSON.parse(localStorage.getItem("orderedFlags") || "[]"),
 };
 
 function renderUserScore() {
@@ -14,7 +15,13 @@ function renderUserScore() {
 }
 
 function renderQuizAnswers() {
-  const { totalQuestions, userAnswers, correctAnswers, questions } = storageData;
+  const {
+    totalQuestions,
+    userAnswers,
+    correctAnswers,
+    questions,
+    orderedFlags,
+  } = storageData;
 
   const ul = document.createElement("ul");
   ul.className = "results-list";
@@ -29,11 +36,20 @@ function renderQuizAnswers() {
     const userText = userSet.length ? userSet.join(", ") : "No answer";
     const correctText = correctSet.join(", ");
 
-    const isCorrect =
-      correctSet.length === userSet.length &&
-      correctSet.every((ans) =>
-        userSet.some((u) => u.toLowerCase() === ans.toLowerCase()),
-      );
+    const correct = correctSet.map((a) => a.toLowerCase());
+    const user = userSet.map((a) => a.toLowerCase());
+
+    let isCorrect;
+
+    if (orderedFlags[i]) {
+      isCorrect =
+        correct.length === user.length &&
+        correct.every((ans, idx) => ans === user[idx]);
+    } else {
+      isCorrect =
+        correct.length === user.length &&
+        correct.every((ans) => user.includes(ans));
+    }
 
     const questionText = questions[i] || `Question ${i + 1}`;
 

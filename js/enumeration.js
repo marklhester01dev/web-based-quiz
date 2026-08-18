@@ -8,6 +8,7 @@ const questions = [
     id: 2,
     question: "Name the planets closest to the Sun (in order, first four).",
     answer: ["Mercury", "Venus", "Earth", "Mars"],
+    ordered: true,
   },
   {
     id: 3,
@@ -122,28 +123,33 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
     "questions",
     JSON.stringify(questionAnswers.map((q) => q.question)),
   );
+  localStorage.setItem(
+    "orderedFlags",
+    JSON.stringify(questionAnswers.map((q) => !!q.ordered)),
+  );
 
   for (let i = 0; i < questionAnswers.length; i++) {
-    const correctSet = questionAnswers[i].answer.map((a) =>
-      a.trim().toLowerCase(),
-    );
+    const question = questionAnswers[i];
 
-    const userSet = (userAnswers[i] ?? []).map((a) =>
+    const correct = question.answer.map((a) => String(a).trim().toLowerCase());
+    const user = (userAnswers[i] ?? []).map((a) =>
       String(a).trim().toLowerCase(),
     );
 
-    const normalizedCorrect = correctSet.map((answer) =>
-      answer.trim().toLowerCase(),
-    );
+    let isFullyCorrect;
 
-    const normalizedUser = userSet.map((answer) => answer.trim().toLowerCase());
+    if (question.ordered) {
+      isFullyCorrect =
+        correct.length === user.length &&
+        correct.every((ans, index) => ans === user[index]);
+    } else {
+      const sortedCorrect = [...correct].sort();
+      const sortedUser = [...user].sort();
 
-    const sortedCorrect = [...normalizedCorrect].sort();
-    const sortedUser = [...normalizedUser].sort();
-
-    const isFullyCorrect =
-      sortedCorrect.length === sortedUser.length &&
-      sortedCorrect.every((ans) => sortedUser.includes(ans));
+      isFullyCorrect =
+        sortedCorrect.length === sortedUser.length &&
+        sortedCorrect.every((ans) => sortedUser.includes(ans));
+    }
 
     isFullyCorrect ? correctAnswer++ : wrongAnswer++;
   }
