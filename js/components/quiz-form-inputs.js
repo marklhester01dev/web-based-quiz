@@ -132,7 +132,7 @@ class QuizForm extends HTMLElement {
       event.preventDefault();
 
       const inputs = document.querySelectorAll(".category-choice__input");
-       const userInputs = Array.from(inputs).map((input) => input.value.trim());
+      const userInputs = Array.from(inputs).map((input) => input.value.trim());
 
       console.log(userInputs);
 

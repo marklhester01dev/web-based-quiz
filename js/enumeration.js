@@ -112,30 +112,40 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
   let correctAnswer = 0;
   let wrongAnswer = 0;
 
+  localStorage.setItem("Total Questions", questionAnswers.length);
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  localStorage.setItem(
+    "correctAnswers",
+    JSON.stringify(questionAnswers.map((q) => q.answer)),
+  );
+  localStorage.setItem(
+    "questions",
+    JSON.stringify(questionAnswers.map((q) => q.question)),
+  );
+
   for (let i = 0; i < questionAnswers.length; i++) {
-    const correctAnswers = questionAnswers[i].answer;
-    const userInputs = Object.values(userAnswers[i] ?? {});
+    const correctSet = questionAnswers[i].answer.map((a) =>
+      a.trim().toLowerCase(),
+    );
 
-    const normalizedCorrect = correctAnswers.map((answer) =>
+    const userSet = (userAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const normalizedCorrect = correctSet.map((answer) =>
       answer.trim().toLowerCase(),
     );
 
-    const normalizedUser = userInputs.map((answer) =>
-      answer.trim().toLowerCase(),
-    );
+    const normalizedUser = userSet.map((answer) => answer.trim().toLowerCase());
 
     const sortedCorrect = [...normalizedCorrect].sort();
     const sortedUser = [...normalizedUser].sort();
 
-    const isCorrect =
-      sortedUser.length === sortedCorrect.length &&
-      sortedUser.every((answer, index) => answer === sortedCorrect[index]);
+    const isFullyCorrect =
+      sortedCorrect.length === sortedUser.length &&
+      sortedCorrect.every((ans) => sortedUser.includes(ans));
 
-    if (isCorrect) {
-      correctAnswer++;
-    } else {
-      wrongAnswer++;
-    }
+    isFullyCorrect ? correctAnswer++ : wrongAnswer++;
   }
 
   return {
