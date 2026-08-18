@@ -249,29 +249,6 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
     }
   }
 
-  // for (let j = 0; j < questionAnswers.length; j++) {
-  //   localStorage.setItem(
-  //     JSON.stringify(`Question Number ${j}`),
-  //     JSON.stringify(`${questionAnswers[j].answer}`),
-  //   );
-  // }
-
-  // for (let j = 0; j < questionAnswers.length; j++) {
-  //   if (userAnswers[j] !== null) {
-  //     localStorage.setItem(
-  //       JSON.stringify(`Question Number ${j}:`),
-  //       JSON.stringify(`${userAnswers[j]}`),
-  //     );
-  //   } else {
-  //     localStorage.setItem(
-  //       JSON.stringify(`Question Number ${j}:`),
-  //       JSON.stringify("No answer"),
-  //     );
-  //   }
-  // console.log(localStorage.getItem(`Question Number ${j}: `));
-  // Prob: logs null in the after submit has been passed
-  // }
-
   return {
     userScore: correctAnswer,
     correctAnswers: correctAnswer,
@@ -314,7 +291,7 @@ quiz.addEventListener("quiz-answer", (event) => {
     console.log("Wrong Answer:", result.wrongAnswers);
     console.log(localStorage.getItem("score"));
 
-    window.location.href = "result.html"; // relative to /pages/
+    window.location.href = "result.html";
   }
 });
 
