@@ -38,7 +38,9 @@ function renderQuizAnswers() {
       String(a).trim().toLowerCase(),
     );
 
-    const userText = userSet.length ? userSet.join(", ") : "No answer";
+    const filteredUserSet = userSet.filter((a) => a !== "");
+
+    const userText = filteredUserSet.length ? filteredUserSet.join(", ") : "No answer";
     const correctText = correctSet.join(", ");
 
     let isCorrect;
