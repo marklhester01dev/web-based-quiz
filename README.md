@@ -13,6 +13,7 @@ This is a web-based quiz mini-project with concepts applied on my previous lesso
 5. Selections
 6. Web Components
 7. Functions
+8. Local Storage
 
 ## File Structure
 
