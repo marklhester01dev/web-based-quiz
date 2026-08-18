@@ -9,24 +9,26 @@ The system displays quiz questions one at a time (or as configured), presents th
 - [x] **FR3 (Progress Indicator):** Show quiz progress
 While the quiz is in progress, the system displays the user's current position (e.g., "Question 3 of 10") so the user knows how much of the quiz remains.
 
-- [ ] **FR4 (Automatic Scoring):** Calculate the user's score
+- [x] **FR4 (Automatic Scoring):** Calculate the user's score
 Upon completion of the quiz, the system automatically compares the user's selected answers against the correct answers and calculates the total number of correct responses.
 
-- [ ] **FR5 (Score Display):** Show quiz scores to users
+- [x] **FR5 (Score Display):** Show quiz scores to users
 Upon completion of the quiz, the system displays the user's score (e.g., number correct out of total questions).
 
-- [ ] **FR6 (Answer Review):** Show correct answers after quiz submission
+- [x] **FR6 (Answer Review):** Show correct answers after quiz submission
 After the user submits or finishes the quiz, the system displays the correct answer for each question alongside the user's chosen answer.
 
-- [ ] **FR7 (Data Storage):** Store user scores locally
-All user scores are stored in the browser's `localStorage` under a dedicated key, as a JSON array of score entries. There is no server component — data is local to the browser/device it was entered on and will not sync across devices or browsers.
+- [x] **FR7 (Data Storage):** Store user score locally
+The user's score is stored in the browser's `localStorage` under a dedicated key as a single JSON object, not a history of multiple entries. Each completed quiz overwrites the previously stored score under that key. There is no server component — data is local to the browser/device it was entered on and will not sync across devices or browsers.
+
+*Revised after Increment 4 testing: originally specified as a JSON array of score entries (history of attempts); changed to a single stored score after testing showed multi-entry storage wasn't behaving as expected.*
 
 ## Non-Functional Requirements
 
-- [ ] **NFR1 (Performance)**
+- [x] **NFR1 (Performance)**
 The system retrieves and displays stored user scores quickly, with no noticeable delay when reading from `localStorage`.
 
-- [ ] **NFR2 (Browser Support)**
+- [x] **NFR2 (Browser Support)**
 The system supports modern browsers only (e.g., latest versions of Chrome, Firefox, Edge, Safari). Legacy browser support is not required.
 
 - [ ] **NFR3 (Accessibility)**

@@ -38,34 +38,33 @@ Expected: System continues the progression of the quiz and the unanswered questi
 Steps: Start a quiz, answer questions one by one
 Expected: Indicator (e.g. "Question 3 of 10") updates accurately after each question
 
-- [ ] **TC5** (**FR4**) Score calculated correctly
+- [x] **TC5** (**FR4**) Score calculated correctly
 Steps: Complete a quiz with a mix of correct/incorrect answers
 Expected: Final score matches the actual number of correct answers
 
-- [ ] **TC6** (**FR5**) Score displayed after quiz
+- [x] **TC6** (**FR5**) Score displayed after quiz
 Steps: Complete a quiz
 Expected: Score is shown clearly (e.g. "7/10") on the results screen
 
-- [ ] **TC7** (**FR6**) Correct answers shown after submission
+- [x] **TC7** (**FR6**) Correct answers shown after submission
 Steps: Complete a quiz
 Expected: Each question shows the correct answer alongside the user's selected answer
 
-- [ ] **TC8** (**FR7**) Score saved to `localStorage`
+- [x] **TC8** (**FR7**) Score saved to `localStorage`
 Steps: Complete a quiz, inspect `localStorage` via DevTools
-Expected: A new entry is added to the dedicated key as a JSON object/array;
-persists after page reload
+Expected: The dedicated key holds a single JSON object with the latest score that persists after page reload; a repeat quiz attempt overwrites the previous value.
 
-- [ ] **TC9** (**FR7**) Data does not sync across browsers/devices
+- [x] **TC9** (**FR7**) Data does not sync across browsers/devices
 Steps: Complete a quiz in Browser A, open the app in Browser B
 Expected: Score from Browser A does not appear in Browser B
 
 ## Non-Functional Requirement Test Cases
 
-- [ ] **TC10** (**NFR1**) Score retrieval is fast
-Steps: Store several score entries, reload the results/history view
+- [x] **TC10** (**NFR1**) Score retrieval is fast
+Steps: Store a single score entry, reload the results/history view
 Expected: Scores load and render with no noticeable delay
 
-- [ ] **TC11** (**NFR2**) Works on all supported browsers
+- [x] **TC11** (**NFR2**) Works on all supported browsers
 Steps: Run TC1-TC9 on latest Chrome, Firefox, Edge, and Safari
 Expected: All test cases pass consistently across all four browsers
 

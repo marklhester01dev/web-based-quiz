@@ -56,7 +56,7 @@ class CategoryCards extends HTMLElement {
     queueMicrotask(() => {
       this._renderScheduled = false;
       this._renderCategoryCards();
-    }); 
+    });
   }
 
   _renderCategoryCards() {

@@ -6,7 +6,7 @@
 
 - [x] **INCREMENT 3:** Show Quiz Progress Indicator, Present Questions and Accept Answers
 
-- [ ] **INCREMENT 4:** Calculate User Score Per Category and Display User Score, Show correct answers after submission, and store users scores in the local storage
+- [x] **INCREMENT 4:** Calculate User Score Per Category and Display User Score, Show correct answers after submission, and store users scores in the local storage
 
 - [ ] **INCREMENT 5:** Improve the ARIA for the Screen Readers
 

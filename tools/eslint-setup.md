@@ -91,7 +91,5 @@ Run it with:
 
 ## Related Docs
 
-- `tech-stack.md` - confirms no bundler/build step is part of the stack and
-  this setup does not change that.
-- `testing.md` - manual QA test cases which ESLint is a supplement to this and
-  not a replacement.
+- `tech-stack.md` - confirms no bundler/build step is part of the stack and this setup does not change that.
+- `testing.md` - manual QA test cases which ESLint is a supplement to this and not a replacement.
