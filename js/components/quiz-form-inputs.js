@@ -131,13 +131,10 @@ class QuizForm extends HTMLElement {
     this.querySelector("#quiz-form").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const userInputs = {};
       const inputs = document.querySelectorAll(".category-choice__input");
+       const userInputs = Array.from(inputs).map((input) => input.value.trim());
 
-      inputs.forEach((item) => {
-        userInputs[item.name] = item.value;
-        console.log(userInputs);
-      });
+      console.log(userInputs);
 
       this.dispatchEvent(
         new CustomEvent("quiz-answer", {

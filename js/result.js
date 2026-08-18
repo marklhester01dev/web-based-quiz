@@ -14,8 +14,7 @@ function renderUserScore() {
 }
 
 function renderQuizAnswers() {
-  const { totalQuestions, userAnswers, correctAnswers, questions } =
-    storageData;
+  const { totalQuestions, userAnswers, correctAnswers, questions } = storageData;
 
   const ul = document.createElement("ul");
   ul.className = "results-list";
@@ -24,24 +23,25 @@ function renderQuizAnswers() {
     const li = document.createElement("li");
     li.id = `question-${i + 1}`;
 
-    const userAns = userAnswers[i] ?? "No answer";
-    const correctAns = correctAnswers[i] ?? "—";
-    const isCorrect = userAns === correctAns;
+    const userSet = (userAnswers[i] ?? []).map((a) => String(a).trim());
+    const correctSet = (correctAnswers[i] ?? []).map((a) => String(a).trim());
+
+    const userText = userSet.length ? userSet.join(", ") : "No answer";
+    const correctText = correctSet.join(", ");
+
+    const isCorrect =
+      correctSet.length === userSet.length &&
+      correctSet.every((ans) =>
+        userSet.some((u) => u.toLowerCase() === ans.toLowerCase()),
+      );
+
     const questionText = questions[i] || `Question ${i + 1}`;
 
     li.innerHTML = `
       <div class="result-item ${isCorrect ? "correct" : "wrong"}">
         <h3>${i + 1}. ${questionText}</h3>
-        <p>
-          Your answer: 
-          <strong class="${isCorrect ? "correct-text" : "wrong-text"}">
-            ${userAns}
-          </strong>
-        </p>
-        <p>
-          Correct answer: 
-          <strong class="correct-text">${correctAns}</strong>
-        </p>
+        <p>Your answer: <strong class="${isCorrect ? "correct-text" : "wrong-text"}">${userText}</strong></p>
+        <p>Correct answer: <strong class="correct-text">${correctText}</strong></p>
       </div>
     `;
 
