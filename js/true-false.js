@@ -191,6 +191,17 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
   let correctAnswer = 0;
   let wrongAnswer = 0;
 
+  localStorage.setItem("Total Questions", questionAnswers.length);
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  localStorage.setItem(
+    "correctAnswers",
+    JSON.stringify(questionAnswers.map((q) => q.answer)),
+  );
+  localStorage.setItem(
+    "questions",
+    JSON.stringify(questionAnswers.map((q) => q.question)),
+  );
+
   for (let i = 0; i < questionAnswers.length; i++) {
     if (userAnswers[i] === questionAnswers[i].answer) correctAnswer++;
     else wrongAnswer++;
@@ -232,6 +243,7 @@ quiz.addEventListener("quiz-answer", (event) => {
     } catch (err) {
       console.error("Could not save score:", err);
     }
+    
     console.log("Your Score:", result.userScore);
     console.log("Correct Answer:", result.correctAnswers);
     console.log("Wrong Answer:", result.wrongAnswers);
