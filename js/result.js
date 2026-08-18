@@ -30,25 +30,27 @@ function renderQuizAnswers() {
     const li = document.createElement("li");
     li.id = `question-${i + 1}`;
 
-    const userSet = (userAnswers[i] ?? []).map((a) => String(a).trim());
-    const correctSet = (correctAnswers[i] ?? []).map((a) => String(a).trim());
+    const userSet = (userAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const correctSet = (correctAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
 
     const userText = userSet.length ? userSet.join(", ") : "No answer";
     const correctText = correctSet.join(", ");
-
-    const correct = correctSet.map((a) => a.toLowerCase());
-    const user = userSet.map((a) => a.toLowerCase());
 
     let isCorrect;
 
     if (orderedFlags[i]) {
       isCorrect =
-        correct.length === user.length &&
-        correct.every((ans, idx) => ans === user[idx]);
+        correctSet.length === userSet.length &&
+        correctSet.every((ans, index) => ans === userSet[index]);
     } else {
       isCorrect =
-        correct.length === user.length &&
-        correct.every((ans) => user.includes(ans));
+        correctSet.length === userSet.length &&
+        correctSet.every((ans) => userSet.includes(ans));
     }
 
     const questionText = questions[i] || `Question ${i + 1}`;
