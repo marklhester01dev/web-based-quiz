@@ -130,7 +130,7 @@ class QuizForm extends HTMLElement {
 
       this.dispatchEvent(
         new CustomEvent("quiz-answer", {
-          detail: { questionId: id, value: checked ? checked.value : null },
+          detail: { questionId: id, value: checked ? [checked.value] : [] },
           bubbles: true,
         }),
       );

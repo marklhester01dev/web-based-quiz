@@ -8,7 +8,7 @@ const questions = [
       { value: "c", label: "Venus" },
       { value: "d", label: "Jupiter" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const questions = [
       { value: "c", label: "Carbon Dioxide" },
       { value: "d", label: "Hydrogen" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const questions = [
       { value: "c", label: "Arctic Ocean" },
       { value: "d", label: "Pacific Ocean" },
     ],
-    answer: "d",
+    answer: ["d"],
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const questions = [
       { value: "c", label: "Mark Twain" },
       { value: "d", label: "Jane Austen" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const questions = [
       { value: "c", label: "Au" },
       { value: "d", label: "Ag" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ const questions = [
       { value: "c", label: "Mexico" },
       { value: "d", label: "Thailand" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ const questions = [
       { value: "c", label: "7" },
       { value: "d", label: "8" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const questions = [
       { value: "c", label: "Mitochondria" },
       { value: "d", label: "Golgi Apparatus" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 9,
@@ -96,7 +96,7 @@ const questions = [
       { value: "c", label: "Mandarin Chinese" },
       { value: "d", label: "Hindi" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 10,
@@ -107,7 +107,7 @@ const questions = [
       { value: "c", label: "2" },
       { value: "d", label: "3" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 11,
@@ -118,7 +118,7 @@ const questions = [
       { value: "c", label: "Kidney" },
       { value: "d", label: "Stomach" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 12,
@@ -129,7 +129,7 @@ const questions = [
       { value: "c", label: "1947" },
       { value: "d", label: "1950" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 13,
@@ -140,7 +140,7 @@ const questions = [
       { value: "c", label: "The Sun" },
       { value: "d", label: "Betelgeuse" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 14,
@@ -151,7 +151,7 @@ const questions = [
       { value: "c", label: "Tokyo" },
       { value: "d", label: "Bangkok" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 15,
@@ -162,7 +162,7 @@ const questions = [
       { value: "c", label: "Ampere" },
       { value: "d", label: "Watt" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 16,
@@ -173,7 +173,7 @@ const questions = [
       { value: "c", label: "Mount Everest" },
       { value: "d", label: "Mount Fuji" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 17,
@@ -184,7 +184,7 @@ const questions = [
       { value: "c", label: "A+" },
       { value: "d", label: "B-" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 18,
@@ -195,7 +195,7 @@ const questions = [
       { value: "c", label: "Clot blood" },
       { value: "d", label: "Digest food" },
     ],
-    answer: "b",
+    answer: ["b"],
   },
   {
     id: 19,
@@ -206,7 +206,7 @@ const questions = [
       { value: "c", label: "Leonardo da Vinci" },
       { value: "d", label: "Claude Monet" },
     ],
-    answer: "c",
+    answer: ["c"],
   },
   {
     id: 20,
@@ -217,7 +217,7 @@ const questions = [
       { value: "c", label: "100°C" },
       { value: "d", label: "-10°C" },
     ],
-    answer: "a",
+    answer: ["a"],
   },
 ];
 
@@ -242,35 +242,19 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
   );
 
   for (let i = 0; i < questionAnswers.length; i++) {
-    if (userAnswers[i] === questionAnswers[i].answer) {
-      correctAnswer++;
-    } else {
-      wrongAnswer++;
-    }
+    const correctSet = questionAnswers[i].answer.map((a) =>
+      a.trim().toLowerCase(),
+    );
+    const userSet = (userAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const isFullyCorrect =
+      correctSet.length === userSet.length &&
+      correctSet.every((ans) => userSet.includes(ans));
+
+    isFullyCorrect ? correctAnswer++ : wrongAnswer++;
   }
-
-  // for (let j = 0; j < questionAnswers.length; j++) {
-  //   localStorage.setItem(
-  //     JSON.stringify(`Question Number ${j}`),
-  //     JSON.stringify(`${questionAnswers[j].answer}`),
-  //   );
-  // }
-
-  // for (let j = 0; j < questionAnswers.length; j++) {
-  //   if (userAnswers[j] !== null) {
-  //     localStorage.setItem(
-  //       JSON.stringify(`Question Number ${j}:`),
-  //       JSON.stringify(`${userAnswers[j]}`),
-  //     );
-  //   } else {
-  //     localStorage.setItem(
-  //       JSON.stringify(`Question Number ${j}:`),
-  //       JSON.stringify("No answer"),
-  //     );
-  //   }
-  // console.log(localStorage.getItem(`Question Number ${j}: `));
-  // Prob: logs null in the after submit has been passed
-  // }
 
   return {
     userScore: correctAnswer,
@@ -300,7 +284,6 @@ quiz.addEventListener("quiz-answer", (event) => {
   if (currentIndex < questions.length) {
     renderQuestion();
   } else {
-    console.log("Quiz Finished", userAnswers);
     let result = calculateUserAnswer(questions, userAnswers);
 
     try {
@@ -309,12 +292,7 @@ quiz.addEventListener("quiz-answer", (event) => {
       console.error("Could not save score:", err);
     }
 
-    console.log("Your Score:", result.userScore);
-    console.log("Correct Answer:", result.correctAnswers);
-    console.log("Wrong Answer:", result.wrongAnswers);
-    console.log(localStorage.getItem("score"));
-
-    window.location.href = "result.html"; // relative to /pages/
+    window.location.href = "result.html";
   }
 });
 

@@ -6,6 +6,7 @@ const storageData = {
   userAnswers: JSON.parse(localStorage.getItem("userAnswers") || "[]"),
   correctAnswers: JSON.parse(localStorage.getItem("correctAnswers") || "[]"),
   questions: JSON.parse(localStorage.getItem("questions") || "[]"),
+  orderedFlags: JSON.parse(localStorage.getItem("orderedFlags") || "[]"),
 };
 
 function renderUserScore() {
@@ -14,8 +15,13 @@ function renderUserScore() {
 }
 
 function renderQuizAnswers() {
-  const { totalQuestions, userAnswers, correctAnswers, questions } =
-    storageData;
+  const {
+    totalQuestions,
+    userAnswers,
+    correctAnswers,
+    questions,
+    orderedFlags,
+  } = storageData;
 
   const ul = document.createElement("ul");
   ul.className = "results-list";
@@ -24,24 +30,38 @@ function renderQuizAnswers() {
     const li = document.createElement("li");
     li.id = `question-${i + 1}`;
 
-    const userAns = userAnswers[i] ?? "No answer";
-    const correctAns = correctAnswers[i] ?? "—";
-    const isCorrect = userAns === correctAns;
+    const userSet = (userAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const correctSet = (correctAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const filteredUserSet = userSet.filter((a) => a !== "");
+
+    const userText = filteredUserSet.length ? filteredUserSet.join(", ") : "No answer";
+    const correctText = correctSet.join(", ");
+
+    let isCorrect;
+
+    if (orderedFlags[i]) {
+      isCorrect =
+        correctSet.length === userSet.length &&
+        correctSet.every((ans, index) => ans === userSet[index]);
+    } else {
+      isCorrect =
+        correctSet.length === userSet.length &&
+        correctSet.every((ans) => userSet.includes(ans));
+    }
+
     const questionText = questions[i] || `Question ${i + 1}`;
 
     li.innerHTML = `
       <div class="result-item ${isCorrect ? "correct" : "wrong"}">
         <h3>${i + 1}. ${questionText}</h3>
-        <p>
-          Your answer: 
-          <strong class="${isCorrect ? "correct-text" : "wrong-text"}">
-            ${userAns}
-          </strong>
-        </p>
-        <p>
-          Correct answer: 
-          <strong class="correct-text">${correctAns}</strong>
-        </p>
+        <p>Your answer: <strong class="${isCorrect ? "correct-text" : "wrong-text"}">${userText}</strong></p>
+        <p>Correct answer: <strong class="correct-text">${correctText}</strong></p>
       </div>
     `;
 

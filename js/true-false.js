@@ -6,7 +6,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 9,
@@ -78,7 +78,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 10,
@@ -87,7 +87,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 11,
@@ -96,7 +96,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 12,
@@ -105,7 +105,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 13,
@@ -115,7 +115,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 14,
@@ -124,7 +124,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 15,
@@ -133,7 +133,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 16,
@@ -142,7 +142,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 17,
@@ -151,7 +151,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 18,
@@ -160,7 +160,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "False",
+    answer: ["False"],
   },
   {
     id: 19,
@@ -169,7 +169,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
   {
     id: 20,
@@ -178,7 +178,7 @@ const questions = [
       { value: "True", label: "True" },
       { value: "False", label: "False" },
     ],
-    answer: "True",
+    answer: ["True"],
   },
 ];
 
@@ -191,9 +191,30 @@ function calculateUserAnswer(questionAnswers, userAnswers) {
   let correctAnswer = 0;
   let wrongAnswer = 0;
 
+  localStorage.setItem("Total Questions", questionAnswers.length);
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+  localStorage.setItem(
+    "correctAnswers",
+    JSON.stringify(questionAnswers.map((q) => q.answer)),
+  );
+  localStorage.setItem(
+    "questions",
+    JSON.stringify(questionAnswers.map((q) => q.question)),
+  );
+
   for (let i = 0; i < questionAnswers.length; i++) {
-    if (userAnswers[i] === questionAnswers[i].answer) correctAnswer++;
-    else wrongAnswer++;
+    const correctSet = questionAnswers[i].answer.map((a) =>
+      a.trim().toLowerCase(),
+    );
+    const userSet = (userAnswers[i] ?? []).map((a) =>
+      String(a).trim().toLowerCase(),
+    );
+
+    const isFullyCorrect =
+      correctSet.length === userSet.length &&
+      correctSet.every((ans) => userSet.includes(ans));
+
+    isFullyCorrect ? correctAnswer++ : wrongAnswer++;
   }
 
   return {
@@ -223,8 +244,6 @@ quiz.addEventListener("quiz-answer", (event) => {
   if (currentIndex < questions.length) {
     renderQuestion();
   } else {
-    console.log("Quiz Finished", userAnswers);
-
     let result = calculateUserAnswer(questions, userAnswers);
 
     try {
@@ -232,10 +251,6 @@ quiz.addEventListener("quiz-answer", (event) => {
     } catch (err) {
       console.error("Could not save score:", err);
     }
-    console.log("Your Score:", result.userScore);
-    console.log("Correct Answer:", result.correctAnswers);
-    console.log("Wrong Answer:", result.wrongAnswers);
-    console.log(localStorage.getItem("score"));
 
     window.location.href = "result.html";
   }

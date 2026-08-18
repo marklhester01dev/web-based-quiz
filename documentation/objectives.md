@@ -8,7 +8,7 @@
 
 - [x] Allow users to select a quiz category before starting.
 - [x] Track and display the user's progress during the quiz.
-- [ ] Generate and display quiz results, including the user's final score.
-- [ ] Show the correct answers after the quiz is completed.
+- [x] Generate and display quiz results, including the user's final score.
+- [x] Show the correct answers after the quiz is completed.
 - [ ] Ensure the interface is responsive and adapts to different screen sizes.
-- [ ] Sanitize and validate all user input to prevent XSS injection.
+- [x] Sanitize and validate all user input to prevent XSS injection.
