@@ -1,5 +1,5 @@
 const userScoreHolder = document.getElementById("userScore");
-const body = document.querySelector("body");
+const main = document.getElementById("questionAnswerContainer");
 
 const storageData = {
   totalQuestions: Number(localStorage.getItem("Total Questions")) || 0,
@@ -17,7 +17,6 @@ function renderQuizAnswers() {
   const { totalQuestions, userAnswers, correctAnswers, questions } =
     storageData;
 
-  const main = document.createElement("main");
   const ul = document.createElement("ul");
   ul.className = "results-list";
 
@@ -50,7 +49,6 @@ function renderQuizAnswers() {
   }
 
   main.appendChild(ul);
-  body.appendChild(main);
 }
 
 renderUserScore();
