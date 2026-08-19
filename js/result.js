@@ -59,7 +59,7 @@ function renderQuizAnswers() {
 
     li.innerHTML = `
       <div class="result-item ${isCorrect ? "correct" : "wrong"}">
-        <h3>${i + 1}. ${questionText}</h3>
+        <h2>${i + 1}. ${questionText}</h2>
         <p>Your answer: <strong class="${isCorrect ? "correct-text" : "wrong-text"}">${userText}</strong></p>
         <p>Correct answer: <strong class="correct-text">${correctText}</strong></p>
       </div>
