@@ -1,3 +1,15 @@
+@layer themes, reset, base, component;
+
+@layer themes {
+  :root {
+    --size-xs: 0.5em;
+    --size-sm: 1em;
+    --size-md: 2em;
+    --size-lg: 3em;
+    --size-xl: 4em;
+  }
+}
+
 @layer reset {
   *,
   *::before,
@@ -19,5 +31,32 @@
   }
   a {
     text-decoration: none;
+  }
+}
+
+@layer component {
+  button[type="submit"], button[type="button"]{
+    padding-inline: calc(var(--size-sm) * 2.5); /*40 em*/
+    padding-block: calc(var(--size-sm) * 1.25); /*20 em*/
+  }
+
+  input[type="radio"] {
+    border: 0px;
+    width: calc(var(--size-sm) * 1.25); /*20 em*/
+    height: calc(var(--size-sm) * 1.25);
+    margin: 0;
+  }
+
+  .category-choice__option {
+    display: flex;
+    align-items: center;
+    gap: var(--size-xs);
+    padding: var(--size-xs) calc(var(--size-xs) * 1.5); /*16px 12px*/
+    cursor: pointer;
+  }
+
+  .category-choice__label {
+    cursor: pointer;
+    flex: 1;
   }
 }
