@@ -35,18 +35,41 @@
 }
 
 @layer component {
+
+  /* Desktop Setup */
   button[type="submit"], button[type="button"]{
-    padding-inline: calc(var(--size-sm) * 2.5); /*40 em*/
-    padding-block: calc(var(--size-sm) * 1.25); /*20 em*/
+    padding-inline: calc(var(--size-sm) * 2.5); /*40 px*/
+    padding-block: calc(var(--size-sm) * 1.25); /*20 px*/
   }
 
   input[type="radio"] {
     border: 0px;
-    width: calc(var(--size-sm) * 1.25); /*20 em*/
+    width: calc(var(--size-sm) * 1.25); /*20 px*/
     height: calc(var(--size-sm) * 1.25);
     margin: 0;
   }
 
+  input[type="text"]{
+    height: calc(var(--size-md) * 1.125); /*36 px*/
+    padding: var(--size-sm);
+  }
+
+  /* Identification and Enumeration */
+  .category-choice__inputField{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--size-sm);
+  }
+
+  .category-choice__inputContainer:first-child{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--size-xs);
+  }
+
+  /*Multiple-choice and true or false*/
   .category-choice__option {
     display: flex;
     align-items: center;
@@ -59,4 +82,5 @@
     cursor: pointer;
     flex: 1;
   }
+
 }

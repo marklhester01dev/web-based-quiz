@@ -14,8 +14,6 @@ template.innerHTML = `
 
       <div
         class="category-choice__inputField"
-        role="group"
-        aria-labelledby="q1-label"
       >
       </div>
     </article>
@@ -115,15 +113,24 @@ class QuizForm extends HTMLElement {
     }
 
     for (let i = 0; i < Number(inputCount); i++) {
+      const div = document.createElement("div");
+      const label = document.createElement("label");
       const input = document.createElement("input");
       if (i === 0) {
         input.id = `q${id}-answer`;
+        label.htmlFor = `q${id}-answer`;
+        label.textContent = "Your answer:";
+        input.autofocus = true;
       }
+      div.className = `category-choice__inputContainer`
       input.type = "text";
       input.name = `question${id}-input${i + 1}`;
       input.className = `category-choice__input q${id}-answer`;
       input.value = answerValue;
-      optionsWrapper.appendChild(input);
+
+      div.appendChild(label);
+      div.appendChild(input)
+      optionsWrapper.appendChild(div);
     }
 
     this.replaceChildren(node);
