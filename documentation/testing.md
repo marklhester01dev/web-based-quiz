@@ -68,7 +68,7 @@ Expected: Scores load and render with no noticeable delay
 Steps: Run TC1-TC9 on latest Chrome, Firefox, Edge, and Safari
 Expected: All test cases pass consistently across all four browsers
 
-- [ ] **TC12** (**NFR3**) Screen reader can navigate the quiz
+- [x] **TC12** (**NFR3**) Screen reader can navigate the quiz
 Steps: Navigate the quiz using **NVDA** only (no mouse)
 Expected: Questions, choices, categories, and results are announced
 clearly and in a logical order
