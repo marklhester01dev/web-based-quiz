@@ -3,7 +3,7 @@ template.innerHTML = `
     <form class="category-choice__form" id="quiz-form">
       <article class="category-choice__question" data-question-id="1">
 
-        <div class="category-choice__tracker">
+        <div class="category-choice__tracker" tabindex="0">
           <span>Question</span>
           <span class="category-choice__currentProgress" data-current-progress="1"></span>
           <span>out of</span>
