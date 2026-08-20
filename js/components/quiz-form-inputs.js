@@ -3,7 +3,7 @@ template.innerHTML = `
   <form class="category-choice__form" id="quiz-form">
     <article class="category-choice__question" data-question-id="1">
 
-      <div class="category-choice__tracker">
+      <div class="category-choice__tracker" tabindex="0">
         <span>Question</span>
         <span class="category-choice__currentProgress" data-current-progress="1"></span>
         <span>out of</span>
@@ -15,7 +15,7 @@ template.innerHTML = `
       <div
         class="category-choice__inputField"
         role="group"
-        aria-labelledby="q1-label"
+        tabindex="-1"
       >
       </div>
     </article>
@@ -115,23 +115,34 @@ class QuizForm extends HTMLElement {
     }
 
     for (let i = 0; i < Number(inputCount); i++) {
+      const div = document.createElement("div");
+      const label = document.createElement("label");
       const input = document.createElement("input");
       if (i === 0) {
         input.id = `q${id}-answer`;
+        input.autofocus = true;
+        label.htmlFor = `q${id}-answer`;
+        label.textContent = "Your answer:";
       }
+
+      div.className = `category-choice__inputContainer`;
       input.type = "text";
       input.name = `question${id}-input${i + 1}`;
       input.className = `category-choice__input q${id}-answer`;
       input.value = answerValue;
-      optionsWrapper.appendChild(input);
+
+      div.appendChild(label);
+      div.appendChild(input);
+      optionsWrapper.appendChild(div);
     }
 
     this.replaceChildren(node);
+    this.querySelector(".category-choice__inputField").focus();
 
     this.querySelector("#quiz-form").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const inputs = document.querySelectorAll(".category-choice__input");
+      const inputs = this.querySelectorAll(".category-choice__input");
       const userInputs = Array.from(inputs).map((input) => input.value.trim());
 
       this.dispatchEvent(

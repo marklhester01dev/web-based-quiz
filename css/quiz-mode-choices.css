@@ -1,0 +1,20 @@
+/*Multiple-choice and true or false*/
+input[type="radio"] {
+  border: 0px;
+  width: calc(var(--size-sm) * 1.25); /*20 px*/
+  height: calc(var(--size-sm) * 1.25);
+  margin: 0;
+}
+
+.category-choice__option {
+  display: flex;
+  align-items: center;
+  gap: var(--size-xs);
+  padding: var(--size-xs) calc(var(--size-xs) * 1.5); /*16px 12px*/
+  cursor: pointer;
+}
+
+.category-choice__label {
+  cursor: pointer;
+  flex: 1;
+}

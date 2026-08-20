@@ -13,6 +13,7 @@ This is a web-based quiz mini-project with concepts applied on my previous lesso
 5. Selections
 6. Web Components
 7. Functions
+8. Local Storage
 
 ## File Structure
 
@@ -22,6 +23,10 @@ assets/
    |-- images/                          - decorative images for the quiz
  css/                                   - stylings
    |-- general.css                      - global stylings
+   |-- quiz-mode-choices.css            - for multiple choice and true or false
+   |-- quiz-mode-inputs.css             - for identification and enumeration
+   |-- quiz-selection.css               - for selecting quiz category
+   |-- results.css                      - quiz results page
  documentation/                         - documentation files
    |-- deliverables.md                  - tangible project requirement
    |-- features.md                      - functionalities of the system

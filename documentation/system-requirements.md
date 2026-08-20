@@ -31,7 +31,7 @@ The system retrieves and displays stored user scores quickly, with no noticeable
 - [x] **NFR2 (Browser Support)**
 The system supports modern browsers only (e.g., latest versions of Chrome, Firefox, Edge, Safari). Legacy browser support is not required.
 
-- [ ] **NFR3 (Accessibility)**
+- [x] **NFR3 (Accessibility)**
 The system covers parts essential for users to navigate the quiz independently — questions, quiz categories, answer choices, and results — and ensures these are readable by screen readers, with particular support for NVDA. The interface must also accommodate the mobile version of the system for the target users.
 
 - [ ] **NFR4 (Security)**

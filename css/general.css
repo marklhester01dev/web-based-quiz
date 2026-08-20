@@ -1,3 +1,15 @@
+@layer themes, reset, base, component;
+
+@layer themes {
+  :root {
+    --size-xs: 0.5em;
+    --size-sm: 1em;
+    --size-md: 2em;
+    --size-lg: 3em;
+    --size-xl: 4em;
+  }
+}
+
 @layer reset {
   *,
   *::before,
@@ -19,5 +31,14 @@
   }
   a {
     text-decoration: none;
+  }
+}
+
+@layer component {
+  /* Desktop Setup */
+  button[type="submit"],
+  button[type="button"] {
+    padding-inline: calc(var(--size-sm) * 2.5); /*40 px*/
+    padding-block: calc(var(--size-sm) * 1.25); /*20 px*/
   }
 }

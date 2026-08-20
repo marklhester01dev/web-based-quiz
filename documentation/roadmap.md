@@ -8,7 +8,7 @@
 
 - [x] **INCREMENT 4:** Calculate User Score Per Category and Display User Score, Show correct answers after submission, and store users scores in the local storage
 
-- [ ] **INCREMENT 5:** Improve the ARIA for the Screen Readers
+- [x] **INCREMENT 5:** Improve the ARIA for the Screen Readers
 
 - [ ] **INCREMENT 6:** Polished the UI and UX Design
 

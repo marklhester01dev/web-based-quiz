@@ -29,6 +29,7 @@ function renderQuizAnswers() {
   for (let i = 0; i < totalQuestions; i++) {
     const li = document.createElement("li");
     li.id = `question-${i + 1}`;
+    li.tabIndex = 0;
 
     const userSet = (userAnswers[i] ?? []).map((a) =>
       String(a).trim().toLowerCase(),
@@ -40,7 +41,9 @@ function renderQuizAnswers() {
 
     const filteredUserSet = userSet.filter((a) => a !== "");
 
-    const userText = filteredUserSet.length ? filteredUserSet.join(", ") : "No answer";
+    const userText = filteredUserSet.length
+      ? filteredUserSet.join(", ")
+      : "No answer";
     const correctText = correctSet.join(", ");
 
     let isCorrect;
@@ -59,7 +62,7 @@ function renderQuizAnswers() {
 
     li.innerHTML = `
       <div class="result-item ${isCorrect ? "correct" : "wrong"}">
-        <h3>${i + 1}. ${questionText}</h3>
+        <h2>${i + 1}. ${questionText}</h2>
         <p>Your answer: <strong class="${isCorrect ? "correct-text" : "wrong-text"}">${userText}</strong></p>
         <p>Correct answer: <strong class="correct-text">${correctText}</strong></p>
       </div>

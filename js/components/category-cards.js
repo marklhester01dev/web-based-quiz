@@ -1,23 +1,24 @@
 const template = document.createElement("template");
 template.innerHTML = `
       <article class="category">
-        <div class="category__caption">
+        <div class="category__caption" tabindex="0">
           <h3 class="category__title"></h3>
           <p class="category__description">
           </p>
         </div>
 
-        <div class="category__details">
+        <div class="category__details" tabindex="0">
           <ul class="category__list">
             <li class="category__list-item">
+              <i class="ph ph-dot custom-large-icon"></i>
               <p class="category__list-text"></p>
-              <i class="ph ph-fill ph-dot-outline"></i>
             </li>
             <li class="category__list-item">
+              <i class="ph ph-dot custom-large-icon"></i>
               <p class="category__list-text"></p>
-              <i class="ph ph-fill ph-dot-outline"></i>
             </li>
             <li class="category__list-item">
+              <i class="ph ph-dot custom-large-icon"></i>
               <p class="category__list-text"></p>
             </li>
           </ul>
@@ -38,7 +39,7 @@ class CategoryCards extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["card-title", "description", "items", "options", "time", "link"];
+    return ["card-title", "items", "options", "time", "link"];
   }
 
   connectedCallback() {
@@ -62,8 +63,6 @@ class CategoryCards extends HTMLElement {
   _renderCategoryCards() {
     const categoryContent = {
       title: this.getAttribute("card-title") || "Untitled Category",
-      description:
-        this.getAttribute("description") || "No Description Provided",
       items: this.getAttribute("items") || "0 Items",
       options: this.getAttribute("options") || "0 Options",
       time: this.getAttribute("time") || "N/A",
@@ -73,7 +72,6 @@ class CategoryCards extends HTMLElement {
     const node = template.content.cloneNode(true);
 
     const title = node.querySelector(".category__title");
-    const description = node.querySelector(".category__description");
     const items = node.querySelector(
       ".category__list-item:nth-child(1) .category__list-text",
     );
@@ -89,7 +87,6 @@ class CategoryCards extends HTMLElement {
       .setAttribute("href", categoryContent.link);
 
     title.textContent = categoryContent.title;
-    description.textContent = categoryContent.description;
     items.textContent = categoryContent.items;
     options.textContent = categoryContent.options;
     time.textContent = categoryContent.time;
