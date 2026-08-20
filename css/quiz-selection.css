@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul li {
+  list-style: none;
+}
+
+.category-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.category__list {
+  display: flex;
+  flex-direction: row;
+}
+
+.category__list-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.custom-large-icon {
+  font-size: calc(var(--size-sm) * 1.5);
+}

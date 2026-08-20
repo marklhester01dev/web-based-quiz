@@ -68,6 +68,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/quiz-selection.css" />
 
     <!-- Scripts -->
     <script src="js/components/category-cards.js" defer></script>
@@ -77,11 +78,11 @@
   <body>
     <main>
       <div class="hero">
-        <h1 class="hero__title">Quizzy</h1>
-        <p class="hero__subtitle">Challenge what you know.</p>
+        <h1 class="hero__title" tabindex="0">Quizzy</h1>
+        <p class="hero__subtitle" tabindex="0">Challenge what you know.</p>
       </div>
 
-      <div class="section-heading">
+      <div class="section-heading" tabindex="0">
         <h2 class="section-heading__title">Choose Category</h2>
       </div>
 
@@ -92,7 +93,6 @@
           <!-- Multiple Choice Category -->
           <category-card
             card-title="Multiple Choice"
-            description="Sharpen your recall and put your knowledge to the test! Choose the right answer from four options and see how many you can nail."
             items="20 Items"
             options="4 Options per Question"
             time="~10 min"
@@ -101,10 +101,20 @@
           </category-card>
           <!-- Multiple Choice Category -->
 
+          <!-- True or False Category -->
+          <category-card
+            card-title="True or False"
+            items="20 Items"
+            options="2 Options per Question"
+            time="~7 min"
+            link="pages/true-false.html"
+          >
+          </category-card>
+          <!-- True or False Category -->
+
           <!-- Identification Category -->
           <category-card
             card-title="Identification"
-            description="Put your memory to the test! Type in the correct answer for each question without any options to guide you."
             items="20 Items"
             options="Free Response"
             time="~12 min"
@@ -116,26 +126,13 @@
           <!-- Enumeration Category -->
           <category-card
             card-title="Enumeration"
-            description="List them all! Recall and type out every item that belongs to each question's set to earn full credit."
-            items="15 Items"
+            items="20 Items"
             options="Multiple Answers per Item"
-            time="~15 min"
+            time="~25 min"
             link="pages/enumeration.html"
           >
           </category-card>
           <!-- Enumeration Category -->
-
-          <!-- True or False Category -->
-          <category-card
-            card-title="True or False"
-            description="Test your judgment! Decide whether each statement is true or false and see how sharp your instincts really are."
-            items="20 Items"
-            options="2 Options per Question"
-            time="~7 min"
-            link="pages/true-false.html"
-          >
-          </category-card>
-          <!-- True or False Category -->
         </div>
         <!-- wrapper -->
       </section>
