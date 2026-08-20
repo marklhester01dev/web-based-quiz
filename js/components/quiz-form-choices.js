@@ -16,6 +16,7 @@ template.innerHTML = `
         class="category-choice__options"
         role="radiogroup"
         aria-labelledby="q1-label"
+        tabindex="-1"
         >
         </div>
       </article>
@@ -38,7 +39,15 @@ class QuizForm extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["question-id", "question-text", "choices", "is-last", "is-first", "current-progress", "total-questions"];
+    return [
+      "question-id",
+      "question-text",
+      "choices",
+      "is-last",
+      "is-first",
+      "current-progress",
+      "total-questions",
+    ];
   }
 
   connectedCallback() {
@@ -66,7 +75,7 @@ class QuizForm extends HTMLElement {
     const isFirst = this.getAttribute("is-first") === "true";
     const totalQuestions = this.getAttribute("total-questions") || 0;
     const currentProgress = this.getAttribute("current-progress") || 0;
-  
+
     let choices = [];
 
     try {
@@ -80,9 +89,15 @@ class QuizForm extends HTMLElement {
     const heading = node.querySelector(".category-choice__question-text");
     const optionsWrapper = node.querySelector(".category-choice__options");
     const nextLabelBtn = node.querySelector(".category-choice__next");
-    const backLabelBtn = node.querySelector(".category-choice__back").closest("button");
-    const currentProgressHolder = node.querySelector(".category-choice__currentProgress");
-    const totalQuestionHolder = node.querySelector(".category-choice__totalQuestions");
+    const backLabelBtn = node
+      .querySelector(".category-choice__back")
+      .closest("button");
+    const currentProgressHolder = node.querySelector(
+      ".category-choice__currentProgress",
+    );
+    const totalQuestionHolder = node.querySelector(
+      ".category-choice__totalQuestions",
+    );
 
     article.setAttribute("data-question-id", id);
     heading.id = `q${id}-label`;
@@ -92,16 +107,19 @@ class QuizForm extends HTMLElement {
 
     // Holds Current Progress
     currentProgressHolder.textContent = currentProgress;
-    currentProgressHolder.setAttribute("data-current-progress", currentProgress);
-    
+    currentProgressHolder.setAttribute(
+      "data-current-progress",
+      currentProgress,
+    );
+
     // Holds total Questions
     totalQuestionHolder.textContent = totalQuestions;
     totalQuestionHolder.setAttribute("data-total-question", totalQuestions);
 
-    if(isFirst){
+    if (isFirst) {
       backLabelBtn.remove();
     }
-    
+
     choices.forEach((choice, i) => {
       const optionDiv = document.createElement("div");
       optionDiv.className = "category-choice__option";
@@ -121,6 +139,7 @@ class QuizForm extends HTMLElement {
     });
 
     this.replaceChildren(node);
+    this.querySelector(".category-choice__options").focus();
 
     //wire the submit listener AFTER the new form is in the DOM
     this.querySelector("#quiz-form").addEventListener("submit", (event) => {
@@ -137,7 +156,9 @@ class QuizForm extends HTMLElement {
     });
 
     // guard: only wire the back button if it actually rendered
-    const liveBackBtn = this.querySelector(".category-choice__back")?.closest("button");
+    const liveBackBtn = this.querySelector(".category-choice__back")?.closest(
+      "button",
+    );
     if (liveBackBtn) {
       liveBackBtn.addEventListener("click", () => {
         this.dispatchEvent(new CustomEvent("quiz-back", { bubbles: true }));
