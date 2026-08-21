@@ -10,15 +10,15 @@ template.innerHTML = `
         <div class="category__details" tabindex="0">
           <ul class="category__list">
             <li class="category__list-item">
-              <i class="ph ph-dot custom-large-icon"></i>
+              <i class="ph ph-list-numbers custom-large-icon" aria-hidden="true"></i>
               <p class="category__list-text"></p>
             </li>
             <li class="category__list-item">
-              <i class="ph ph-dot custom-large-icon"></i>
+              <i class="ph ph-list-bullets custom-large-icon" aria-hidden="true"></i>
               <p class="category__list-text"></p>
             </li>
             <li class="category__list-item">
-              <i class="ph ph-dot custom-large-icon"></i>
+              <i class="ph ph-clock custom-large-icon" aria-hidden="true"></i>
               <p class="category__list-text"></p>
             </li>
           </ul>
@@ -73,13 +73,13 @@ class CategoryCards extends HTMLElement {
 
     const title = node.querySelector(".category__title");
     const items = node.querySelector(
-      ".category__list-item:nth-child(1) .category__list-text",
+      ".category__list-item:nth-child(1) .category__list-text"
     );
     const options = node.querySelector(
-      ".category__list-item:nth-child(2) .category__list-text",
+      ".category__list-item:nth-child(2) .category__list-text"
     );
     const time = node.querySelector(
-      ".category__list-item:nth-child(3) .category__list-text",
+      ".category__list-item:nth-child(3) .category__list-text"
     );
 
     node
