@@ -10,6 +10,8 @@
     --space-xl: 2rem; /* 32px */
     --space-2xl: 3rem; /* 48px */
 
+    --control-radio-size: 1em; /*16em radio buttons*/
+
     /* Sizing scale 4/8 sizing system */
     --size-xs: 0.25rem; /* 4px  */
     --size-sm: 0.5rem; /* 8px  */
@@ -21,7 +23,7 @@
 
     /* Font Family: Lexend and Google Sans */
     --font-headings: "Lexend", "Google Sans", Roboto, Montserrat, Arial;
-    --font-body: "Google Sans", Roboto, Montserrat,  Arial;
+    --font-body: "Google Sans", Roboto, Montserrat, Arial;
 
     /* Color hues (single source of truth) */
     --hue-primary: 258;
