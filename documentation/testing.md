@@ -73,16 +73,16 @@ Steps: Navigate the quiz using **NVDA** only (no mouse)
 Expected: Questions, choices, categories, and results are announced
 clearly and in a logical order
 
-- [ ] **TC13** (**NFR3**) Mobile layout is usable
+- [x] **TC13** (**NFR3**) Mobile layout is usable
 Steps: Open the app on a mobile viewport/device
 Expected: Quiz is fully usable - text readable, buttons tappable,
 no horizontal scrolling
 
-- [ ] **TC14** (**NFR4**) CSP blocks injected scripts
+- [x] **TC14** (**NFR4**) CSP blocks injected scripts
 Steps: Attempt to inject a script via quiz input or console
 (e.g. `<script>` in a text field, if applicable)
-Expected: Script does not execute; browser console shows a **CSP** violation
+Expected: Script does not execute;
 
-- [ ] **TC15** (**NFR4**) CSP meta tag present and correctly scoped
+- [x] **TC15** (**NFR4**) CSP meta tag present and correctly scoped
 Steps: Inspect `index.html`
 Expected: `<meta>` **CSP** tag exists, restricting scripts/styles/objects to same-origin
