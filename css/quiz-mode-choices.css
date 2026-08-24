@@ -55,3 +55,7 @@
     color: var(--text-primary);
   }
 }
+
+main{
+  width: min(600px, 100%);
+}

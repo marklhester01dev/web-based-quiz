@@ -124,6 +124,7 @@
   button[type="button"] {
     padding-inline: var(--space-xl);
     padding-block: var(--space-md);
+    border-radius: var(--size-xs);
     background: var(--color-primary);
     color: var(--text-on-primary);
     border: none;
@@ -237,7 +238,6 @@ main {
   flex-direction: column;
   align-items: stretch;
   gap: var(--space-lg);
-  width: min(600px, 100%);
   margin-inline: auto;
   padding: var(--space-lg) var(--space-sm);
 }

@@ -48,3 +48,7 @@
     border-color: var(--color-primary);
   }
 }
+
+main{
+  width: min(600px, 100%);
+}

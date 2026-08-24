@@ -162,20 +162,8 @@
   }
 }
 
-body {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../assets/images/quiz-8-o.avif") center center / cover no-repeat;
-}
-
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: var(--space-lg);
   width: min(940px, 100%);
-  margin-inline: auto;
-  padding: var(--space-lg) var(--space-sm);
 }
 
 .hero {
