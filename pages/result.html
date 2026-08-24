@@ -68,15 +68,23 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/results.css">
+    <link rel="stylesheet" href="../css/results.css" />
 
     <!-- Scripts -->
     <script src="../js/result.js" defer></script>
     <title>Quiz Results | Web-based Quiz</title>
   </head>
   <body>
-    <h1 tabindex="0">Your Score: <span id="userScore"></span> </h1>
-    <main id="questionAnswerContainer"></main>
-    <a href="../index.html">Take a Quiz Again</a>
+    <main class="results-page">
+      <section class="results-hero">
+        <h1 class="results-hero__title" tabindex="0">
+          Your Score: <span id="userScore" class="results-hero__score"></span>
+        </h1>
+      </section>
+
+      <div id="questionAnswerContainer" class="results-container"></div>
+
+      <a href="../index.html" class="results-page__cta">Take a Quiz Again</a>
+    </main>
   </body>
 </html>
