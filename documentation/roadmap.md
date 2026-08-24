@@ -10,6 +10,4 @@
 
 - [x] **INCREMENT 5:** Improve the ARIA for the Screen Readers
 
-- [ ] **INCREMENT 6:** Polished the UI and UX Design
-
-- [ ] **INCREMENT 7:** Create the responsiveness of the website
+- [x] **INCREMENT 6:** Polished the UI and UX Design

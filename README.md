@@ -20,6 +20,7 @@ This is a web-based quiz mini-project with concepts applied on my previous lesso
 ```
 assets/
    |-- icons/                           - svg icons
+        |--logo/
    |-- images/                          - decorative images for the quiz
  css/                                   - stylings
    |-- general.css                      - global stylings

@@ -8,4 +8,4 @@
 - [x] Score viewing after the quiz is completed
 - [x] Correct answers shown after the quiz
 - [x] XSS injection prevention (input sanitization/validation)
-- [ ] Responsive design for different screen sizes
+- [x] Responsive design for different screen sizes
